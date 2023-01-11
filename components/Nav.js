@@ -1,6 +1,7 @@
-// do something!
+import { articleLendar } from "./NewsList.js"
 
-const root = document.querySelector('#root') // rootDOM
+// do something!
+const $root = document.querySelector('#root') // rootDOM
 
 export const navLendar = ()=>{ // NavBar 렌더링 함수
   const $categoryList =  document.createElement('nav') // categoryList
@@ -16,5 +17,22 @@ export const navLendar = ()=>{ // NavBar 렌더링 함수
     <li id="technology" class="category-item">기술</li>
    </ul> 
   `
-  root.appendChild($categoryList)
+  $root.appendChild($categoryList)
+
+  const categoryButtons = document.querySelectorAll('.category-item')
+  
+
+  categoryButtons.forEach((button)=>{
+    
+    button.addEventListener('click',(e)=>{
+      const prevChooseButton = document.querySelector('.category-item.active')
+      prevChooseButton.classList.remove('active')
+      e.target.classList.add('active')
+
+      const category = e.target.id
+      
+      articleLendar(category)
+    })
+  })
 }
+
