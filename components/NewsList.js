@@ -8,7 +8,7 @@ const $newsListContainer = document.createElement("div")
 
 
 
-export const newsListLendar =  () => {
+export const newsListLendar = () => {
     const $root = document.querySelector("#root")// rootDOM
     $newsListContainer.className = "news-list-container"
     $root.appendChild($newsListContainer)
@@ -16,10 +16,8 @@ export const newsListLendar =  () => {
     articleLendar()
 }
 
-export const articleLendar = async(category) =>{
-    if(!category){
-        category = 'all'
-    }
+export const articleLendar = async (category = 'all') => {
+
     const dataURL = `https://newsapi.org/v2/top-headlines?country=us&category=${category === "all" ? "" : category}&page=${page}&pageSize=${pageSize}&apiKey=${API_KEY}`
 
     const $article = document.createElement("article")
@@ -33,8 +31,8 @@ export const articleLendar = async(category) =>{
             const { url, urlToImage, title, content } = article // 필요한 정보 1.뉴스 url, 2.urlToImage , 3.제목, 4.내용
             const $newsItem = document.createElement("section")
             $newsItem.className = "news-item"
-            $newsItem.innerHTML = 
-            `
+            $newsItem.innerHTML =
+                `
                 <div class="thumbnail">
                     <a href=${url} target="_blank" rel="noopener noreferrer">
                     <img
