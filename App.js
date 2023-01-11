@@ -26,3 +26,7 @@ categoryButtons.forEach((button) => {
 
     })
 })
+
+const scrollRoad = () => { // 스크롤의 위치가 밑바닥이 되면 자동으로 로딩
+
+}
