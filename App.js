@@ -1,11 +1,12 @@
 // do something!
-
 import { navLendar } from "./components/Nav.js";
-import { newsListLendar } from "./components/NewsList.js";
+import { articleRendar, newsListLendar } from "./components/NewsList.js";
+
 
 navLendar() // navBar 렌더링
 
 newsListLendar() // newsList 렌더링
+
 
 
 const categoryButtons = document.querySelectorAll('.category-item') // 카테고리 버튼의 array
@@ -19,25 +20,17 @@ categoryButtons.forEach((button) => {
 
         prevChooseButton.classList.remove('active')
         e.target.classList.add('active')
-
         const category = e.target.id
-
-        newsListLendar(category)
+        const newsItems = document.querySelectorAll('.news-item')
+        
+        newsItems.forEach(news=>{
+            news.remove()
+        })
+        articleRendar(category, 1)
 
     })
 })
 
-const observer = new IntersectionObserver((entries)=>{
-    let page = 1
-    entries.forEach((entry)=>{
-        if(entry.intersectionRatio > 0){
-            setTimeout(()=>{
-                newsListLendar('',++page) 
-            },100)
-        }
-    })
-    
-}) // 스크롤의 위치가 밑바닥이 되면 자동으로 로딩
-observer.observe(document.querySelector('.scroll-observer'))
 
-// console.log(document.querySelector('.scroll-observer'));
+
+
