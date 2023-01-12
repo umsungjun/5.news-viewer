@@ -27,6 +27,17 @@ categoryButtons.forEach((button) => {
     })
 })
 
-const scrollRoad = () => { // 스크롤의 위치가 밑바닥이 되면 자동으로 로딩
+const observer = new IntersectionObserver((entries)=>{
+    let page = 1
+    entries.forEach((entry)=>{
+        if(entry.intersectionRatio > 0){
+            setTimeout(()=>{
+                newsListLendar('',++page) 
+            },100)
+        }
+    })
+    
+}) // 스크롤의 위치가 밑바닥이 되면 자동으로 로딩
+observer.observe(document.querySelector('.scroll-observer'))
 
-}
+// console.log(document.querySelector('.scroll-observer'));
