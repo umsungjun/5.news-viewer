@@ -2,7 +2,8 @@
 const $root = document.querySelector("#root")// rootDOM
 const pageSize = 5 // 가져올 아이템 갯수
 const API_KEY = "5486c6d87dde412c813cb72122eccc94"
-let page = 0
+let page = 1
+
 
 export const articleRendar = async (category = 'all', page=1)=>{
     
@@ -48,6 +49,8 @@ export const articleRendar = async (category = 'all', page=1)=>{
     
 }
 
+
+
 export const newsListLendar = ()=> { // 뉴스 리스트 불러옴
     
     
@@ -76,9 +79,8 @@ const observer = new IntersectionObserver((entries)=>{
     
     entries.forEach((entry)=>{
         
-        if(entry.intersectionRatio > 0){ // observer에 닿으면 실행
+        if(entry.intersectionRatio > 0 && window.scrollY !== 0){ // observer에 닿으면 실행
             page ++
-            
             setTimeout(()=>{
                 
                 articleRendar(category, page) 
@@ -89,8 +91,6 @@ const observer = new IntersectionObserver((entries)=>{
     
     }) // 스크롤의 위치가 밑바닥이 되면 자동으로 로딩
     
-
-
 
 
 

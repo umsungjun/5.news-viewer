@@ -31,6 +31,7 @@ categoryButtons.forEach((button) => {
     })
 })
 
+console.log(document.body.scrollTop);
 
 
 
