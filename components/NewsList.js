@@ -79,7 +79,7 @@ const observer = new IntersectionObserver((entries)=>{
     
     entries.forEach((entry)=>{
         
-        if(entry.intersectionRatio > 0 && window.scrollY !== 0){ // observer에 닿으면 실행
+        if(entry.intersectionRatio > 0 && window.scrollY !== 0){ // 새로고침이나 초기 렌더링시 혼자 실행되서 예외처리
             page ++
             setTimeout(()=>{
                 
