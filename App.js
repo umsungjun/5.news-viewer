@@ -22,8 +22,8 @@ categoryButtons.forEach((button) => {
         e.target.classList.add('active')
         const category = e.target.id
         const newsItems = document.querySelectorAll('.news-item')
-        
-        newsItems.forEach(news=>{
+
+        newsItems.forEach(news => {
             news.remove()
         })
         articleRendar(category, 1)
@@ -31,7 +31,7 @@ categoryButtons.forEach((button) => {
     })
 })
 
-console.log(document.body.scrollTop);
+
 
 
 
